@@ -5,21 +5,48 @@ import multiprocessing
 import toml
 
 
-def load_param(run_param_file):
-    with open(run_param_file, "r") as f:
+def load_param(run_config_file):
+    """
+
+    Args:
+        run_config_file (str): File path of the run config (in toml)
+
+    Returns:
+        config (dict) : configuration of the run
+
+    """
+    with open(run_config_file, "r") as f:
         config = toml.load(f)
 
     return config
 
 
-def load_run_config_files(params_list_file):
-    with open(params_list_file, "r") as f:
+def load_run_config_files(run_config_files):
+    """
+    Read all run config files from the txt input
+
+    Args:
+        run_config_files (str): File path of the list of run config files (in txt)
+
+    Returns:
+        config_files (list): list of configuration files' path
+
+    """
+    with open(run_config_files, "r") as f:
         config_files = [line.strip() for line in f if line.strip()]
 
     return config_files
 
 
 def parse_args():
+    """
+    Read the given shell arguments
+
+    Returns:
+        args.file(str) : run config files
+        args.parallel(bool): True if the use put parallel flag
+
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "file", help="Run configuration file in TOML or TXT (see documentation)"

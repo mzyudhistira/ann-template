@@ -2,7 +2,7 @@ import os
 import argparse
 import multiprocessing
 
-import toml
+import tomllib
 
 
 def load_param(run_config_file):
@@ -15,8 +15,8 @@ def load_param(run_config_file):
         config (dict) : configuration of the run
 
     """
-    with open(run_config_file, "r") as f:
-        config = toml.load(f)
+    with open(run_config_file, "rb") as f:
+        config = tomllib.load(f)
 
     return config
 
@@ -44,7 +44,7 @@ def parse_args():
 
     Returns:
         args.file(str) : run config files
-        args.parallel(bool): True if the use put parallel flag
+        args.parallel(bool): True if the user puts parallel flag
 
     """
     parser = argparse.ArgumentParser()

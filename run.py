@@ -25,15 +25,23 @@ def run(config):
                             rms deviation, std difference, output file, and note
 
     """
+
+    # Load run config
     run_param = utils.run.load_param(config)
     run_datetime = datetime.now().strftime("%Y-%m-%d %H:%M")
 
+    # Initialize the directories
+    utils.file.initialize_directory()
+    utils.file.initialize_run_result_dir(run_param, run_datetime)
+
+    # Running the pipeline
     input_obj = input.build.Input(run_param["input"])
     model_obj = model.build.Model(input_obj, run_param["model"])
     model_obj.model.summary()
     # train_obj = training.train.TrainModel(input_obj, model_obj, run_param["training"])
     # test_result = output.test.Test(input_obj, model_obj, train_obj)
-    #
+
+    # Writing run summary
     # run_summary = [
     #     run_datetime,
     #     run_param["run"]["name"],

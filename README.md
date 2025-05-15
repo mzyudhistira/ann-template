@@ -2,8 +2,8 @@
 This repository is a template ML pipeline that can be used to do any deep learning calculation.
 THIS IS STILL A WORKING PROCESS. Here is the broad roadmap:
 - [x] Make run template
-- [] Make input processor
-- [] Make model processor
+- [x] Make input processor
+- [x] Make model processor
 - [] Make training processor
 - [] Make output processor
 - [] Make analysis

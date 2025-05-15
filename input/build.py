@@ -3,7 +3,7 @@ import importlib
 
 class Input:
     """
-    A class to handle the input part of ML pipeline. This includes:
+    Initialize the Input class in the ML pipeline. This includes:
     loading the dataset, preprocessing, and feature engineering.
 
     Attributes:

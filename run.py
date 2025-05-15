@@ -29,7 +29,8 @@ def run(config):
     run_datetime = datetime.now().strftime("%Y-%m-%d %H:%M")
 
     input_obj = input.build.Input(run_param["input"])
-    # model_obj = model.build.Model(input_obj, run_param["model"])
+    model_obj = model.build.Model(input_obj, run_param["model"])
+    model_obj.model.summary()
     # train_obj = training.train.TrainModel(input_obj, model_obj, run_param["training"])
     # test_result = output.test.Test(input_obj, model_obj, train_obj)
     #

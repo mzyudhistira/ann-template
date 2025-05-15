@@ -29,31 +29,32 @@ def run(config):
     run_datetime = datetime.now().strftime("%Y-%m-%d %H:%M")
 
     input_obj = input.build.Input(run_param["input"])
-    model_obj = model.build.Model(input_obj, run_param["model"])
-    train_obj = training.train.TrainModel(input_obj, model_obj, run_param["training"])
-    test_result = output.test.Test(input_obj, model_obj, train_obj)
-
-    run_summary = [
-        run_datetime,
-        run_param["run"]["name"],
-        config,
-        train_obj.loss,
-        train_obj.val_loss,
-        test_result.rms_dev,
-        test_result.std_diff,
-        test_result.output,
-        run_param["run"]["note"],
-    ]
-
-    with open("summary.csv", "a", newline="") as summary_file:
-        writer = csv.writer(summary_file)
-
-        run_summary = [
-            [x if x is not None else "" for x in run_summary]
-        ]  # Replace None with empty string
-        writer.writerows(run_summary)
-
-    return run_summary
+    # model_obj = model.build.Model(input_obj, run_param["model"])
+    # train_obj = training.train.TrainModel(input_obj, model_obj, run_param["training"])
+    # test_result = output.test.Test(input_obj, model_obj, train_obj)
+    #
+    # run_summary = [
+    #     run_datetime,
+    #     run_param["run"]["name"],
+    #     config,
+    #     train_obj.loss,
+    #     train_obj.val_loss,
+    #     test_result.rms_dev,
+    #     test_result.std_diff,
+    #     test_result.output,
+    #     run_param["run"]["note"],
+    # ]
+    #
+    # with open("summary.csv", "a", newline="") as summary_file:
+    #     writer = csv.writer(summary_file)
+    #
+    #     run_summary = [
+    #         [x if x is not None else "" for x in run_summary]
+    #     ]  # Replace None with empty string
+    #     writer.writerows(run_summary)
+    #
+    # return run_summary
+    #
 
 
 def main():

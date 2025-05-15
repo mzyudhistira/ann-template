@@ -23,7 +23,7 @@ def load_param(run_config_file):
 
 def load_run_config_files(run_config_files):
     """
-    Read all run config files from the txt input
+    Read all run config files from TXT input
 
     Args:
         run_config_files (str): File path of the list of run config files (in txt)
@@ -43,8 +43,8 @@ def parse_args():
     Read the given shell arguments
 
     Returns:
-        args.file(str) : run config files
-        args.parallel(bool): True if the user puts parallel flag
+        args.file (str) : run config files
+        args.parallel (bool): True if the user puts parallel flag
 
     """
     parser = argparse.ArgumentParser()
@@ -54,7 +54,7 @@ def parse_args():
     parser.add_argument(
         "-pl",
         "--parallel",
-        help="Run the program in parallel, only accept TXT",
+        help="Run the program in parallel, only accepts TXT",
         action="store_true",
     )
 

@@ -14,7 +14,8 @@ class Input:
         data (list): List of training, validation, and test data (np arr)
     """
 
-    def __init__(self, input_param) -> None:
+    def __init__(self, run_param) -> None:
+        input_param = run_param["input"]
         self.module = input_param["module"]
         self.generator = input_param["generator"]
         self.param = input_param["param"]

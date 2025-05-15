@@ -32,13 +32,17 @@ def run(config):
 
     # Initialize the directories
     utils.file.initialize_directory()
-    utils.file.initialize_run_result_dir(run_param, run_datetime)
+    run_dir = utils.file.initialize_run_result_dir(run_param, run_datetime)
+    run_param["run"]["dir"] = run_dir
 
     # Running the pipeline
-    input_obj = input.build.Input(run_param["input"])
-    model_obj = model.build.Model(input_obj, run_param["model"])
+    input_obj = input.build.Input(run_param)
+
+    model_obj = model.build.Model(input_obj, run_param)
     model_obj.model.summary()
-    # train_obj = training.train.TrainModel(input_obj, model_obj, run_param["training"])
+
+    train_obj = training.train.TrainModel(run_param)
+    train_obj.run_training(input_obj, model_obj)
     # test_result = output.test.Test(input_obj, model_obj, train_obj)
 
     # Writing run summary

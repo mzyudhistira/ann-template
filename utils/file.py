@@ -23,7 +23,12 @@ def initialize_run_result_dir(run_param, run_datetime):
     Args:
         run_param (dict): The dict from the run config
         run_datetime (str): Datetime of the run
+
+    Returns:
+        run_dir (str): Run result directory
     """
     run_dir_name = f"{run_datetime}_{run_param['run']['name']}"
     run_dir = Path(f"data/result/{run_dir_name}")
-    run_dir.mkdir(parents=True)
+    run_dir.mkdir(parents=True, exist_ok=True)  # change exist_ok after done
+
+    return run_dir

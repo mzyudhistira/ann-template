@@ -13,13 +13,14 @@ class Model:
         model (keras model): Generated model
     """
 
-    def __init__(self, input_object, model_param) -> None:
+    def __init__(self, input_object, run_param) -> None:
+        model_param = run_param["model"]
         self.module = model_param["module"]
         self.generator = model_param["generator"]
         self.param = model_param["param"]
 
         # Loading the number of input neurons
-        N_input = input_object.data[0][0, :-1].shape[0]
+        N_input = input_object.data[0][0].shape[1]
         model_param["param"]["N_input"] = N_input
 
     def _generate_model(self):

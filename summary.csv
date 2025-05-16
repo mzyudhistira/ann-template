@@ -1,1 +1,2 @@
-datetime,run_name,run_config,loss,val_loss,rms_dev,std_diff,output_file,note
+datetime,run_name,run_config,loss,val_loss,rms_dev,mae,std_diff,output_file,note
+2025-05-16 02:20,test,data/run/test.toml,data/result/2025-05-16 02:20_test/loss.dat,data/result/2025-05-16 02:20_test/val_loss.dat,0.8802146135176855,0.047093686396540185,0.8789538955779607,data/result/2025-05-16 02:20_test/result.csv,sample note

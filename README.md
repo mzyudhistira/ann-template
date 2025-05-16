@@ -4,8 +4,8 @@ THIS IS STILL A WORKING PROCESS. Here is the broad roadmap:
 - [x] Make run template
 - [x] Make input processor
 - [x] Make model processor
-- [] Make training processor
-- [] Make output processor
+- [x] Make training processor
+- [x] Make output processor
 - [] Make analysis
 
 # Installation

@@ -28,8 +28,6 @@ class TrainModel:
         self.loss = run_dir / "loss.dat"
         self.val_loss = run_dir / "val_loss.dat"
 
-        print(self.module, self.method, self.param)
-
     def run_training(self, input_object, model_object):
         module = importlib.import_module(f"training.{self.module}")
         method = getattr(module, self.method)

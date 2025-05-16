@@ -2,11 +2,6 @@ import time
 
 import numpy as np
 from keras.callbacks import ModelCheckpoint, Callback
-from tensorflow.keras import mixed_precision
-
-policy = mixed_precision.Policy("mixed_float16")
-mixed_precision.set_global_policy(policy)
-print("new")
 
 
 def simple(training_data, training_param, model, validation_data, file):

@@ -22,7 +22,7 @@ def run(config):
     Returns:
         run_summary (list): List of strings summarizing the run:
                             datetime, run name, run config file, loss, validation loss,
-                            rms deviation, std difference, output file, and note
+                            rms deviation, mae,std difference, output file, and note
 
     """
 
@@ -43,31 +43,31 @@ def run(config):
 
     train_obj = training.train.TrainModel(run_param)
     train_obj.run_training(input_obj, model_obj)
-    # test_result = output.test.Test(input_obj, model_obj, train_obj)
+    test_result = output.test.Test(input_obj, model_obj, train_obj, run_param)
 
     # Writing run summary
-    # run_summary = [
-    #     run_datetime,
-    #     run_param["run"]["name"],
-    #     config,
-    #     train_obj.loss,
-    #     train_obj.val_loss,
-    #     test_result.rms_dev,
-    #     test_result.std_diff,
-    #     test_result.output,
-    #     run_param["run"]["note"],
-    # ]
-    #
-    # with open("summary.csv", "a", newline="") as summary_file:
-    #     writer = csv.writer(summary_file)
-    #
-    #     run_summary = [
-    #         [x if x is not None else "" for x in run_summary]
-    #     ]  # Replace None with empty string
-    #     writer.writerows(run_summary)
-    #
-    # return run_summary
-    #
+    run_summary = [
+        run_datetime,
+        run_param["run"]["name"],
+        config,
+        train_obj.loss,
+        train_obj.val_loss,
+        test_result.rms_dev,
+        test_result.mae,
+        test_result.std_diff,
+        test_result.output,
+        run_param["run"]["note"],
+    ]
+
+    with open("summary.csv", "a", newline="") as summary_file:
+        writer = csv.writer(summary_file)
+
+        run_summary = [
+            [x if x is not None else "" for x in run_summary]
+        ]  # Replace None with empty string
+        writer.writerows(run_summary)
+
+    return run_summary
 
 
 def main():

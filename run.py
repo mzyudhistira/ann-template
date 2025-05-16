@@ -11,6 +11,7 @@ import model
 import training
 import output
 import utils
+import analysis
 
 
 def run(config):
@@ -46,6 +47,8 @@ def run(config):
     test_result = output.test.Test(input_obj, model_obj, train_obj, run_param)
 
     # Writing run summary
+    analysis.plot.plot_loss(train_obj.loss, train_obj.val_loss)
+
     run_summary = [
         run_datetime,
         run_param["run"]["name"],

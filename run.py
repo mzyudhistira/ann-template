@@ -23,13 +23,14 @@ def run(config):
     Returns:
         run_summary (list): List of strings summarizing the run:
                             datetime, run name, run config file, loss, validation loss,
-                            rms deviation, mae,std difference, output file, and note
+                            rms deviation, mae,std difference, output file, run time and note
 
     """
 
     # Load run config
     run_param = utils.run.load_param(config)
-    run_datetime = datetime.now().strftime("%Y-%m-%d %H:%M")
+    start_time = datetime.now()
+    run_datetime = start_time.strftime("%Y-%m-%d %H:%M")
 
     # Initialize the directories
     utils.file.initialize_directory()
@@ -48,6 +49,8 @@ def run(config):
 
     # Writing run summary
     analysis.plot.plot_loss(train_obj.loss, train_obj.val_loss)
+    end_time = datetime.now()
+    run_time = end_time - start_time
 
     run_summary = [
         run_datetime,
@@ -59,6 +62,7 @@ def run(config):
         test_result.mae,
         test_result.std_diff,
         test_result.output,
+        run_time,
         run_param["run"]["note"],
     ]
 

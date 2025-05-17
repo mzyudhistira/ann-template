@@ -4,21 +4,19 @@ import numpy as np
 from keras.callbacks import ModelCheckpoint, Callback
 
 
-def simple(training_data, training_param, model, validation_data, file):
+def simple(data, model, training_param, file_path):
     """
     Simple training method
 
     Args:
-        training_data (tuple): Feature and target of the training data
-        training_param (dict): Parameter of the training
+        data (dict) : Dataset used in the run
         model (model object): Model object from the pipeline
-        validation_data (tuple): Feature and target of the validation data
-        file (list): Filepath of the results
+        file_path (list): Filepath of the results
     """
-    best_weights, last_weights, loss_path, val_loss_path = file
+    best_weights, last_weights, loss_path, val_loss_path = file_path
 
-    features, target = training_data
-    val_features, val_target = validation_data
+    features, target = data["train"]
+    val_features, val_target = data["val"]
 
     epoch = training_param["epoch"]
     batch = training_param["batch"]

@@ -20,7 +20,7 @@ class Model:
         self.param = model_param["param"]
 
         # Loading the number of input neurons
-        N_input = input_object.data[0][0].shape[1]
+        N_input = input_object.data["train"][0].shape[1]
         model_param["param"]["N_input"] = N_input
 
     def _generate_model(self):

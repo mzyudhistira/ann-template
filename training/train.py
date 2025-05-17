@@ -40,10 +40,4 @@ class TrainModel:
             self.val_loss,
         ]
 
-        method(
-            training_data,
-            self.param,
-            model_object.model,
-            validation_data,
-            training_result,
-        )
+        method(input_object.data, model_object.model, self.param, training_result)

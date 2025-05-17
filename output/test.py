@@ -16,7 +16,7 @@ class Test:
     """
 
     def __init__(self, input_obj, model_obj, train_obj, run_param) -> None:
-        test_feature, test_target = input_obj.data[2]
+        test_feature, test_target = input_obj.data["test"]
         prediction = model_obj.model.predict(test_feature).flatten()
         diff = test_target - prediction
 

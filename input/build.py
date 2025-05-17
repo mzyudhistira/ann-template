@@ -11,7 +11,7 @@ class Input:
         generator (str): Python function to generate an input data.
                          Should only take param as the input and return input data
         param (dict): Parameters to generate the input data, customize it based on the needs
-        data (list): List of training, validation, and test data (np arr)
+        data (dict): Dictionary of training, validation, and test data (tuples)
     """
 
     def __init__(self, run_param) -> None:

@@ -12,9 +12,9 @@ def boston_housing_case(input_param):
         input_param (dict): Parameters of the generator
 
     Returns:
-        data_train, data_val, data_test (tuple of np arr):
-        Train, validation and test data. The tuple consists of
-        feature and target data.
+        data (dict): Dictionary with three elements.
+                     keys (str) = train, val, test
+                     value (tuple) = Tuple of features and target
     """
     percent_train, percent_val, percent_test = input_param["percentage"]
     (X_train, y_train), (X_test, y_test) = boston_housing.load_data()
@@ -30,11 +30,11 @@ def boston_housing_case(input_param):
         input_data, percent_train, percent_val, percent_test
     )
 
-    return (
-        extract_feature(data_train),
-        extract_feature(data_val),
-        extract_feature(data_test),
-    )
+    return {
+        "train": extract_feature(data_train),
+        "val": extract_feature(data_val),
+        "test": extract_feature(data_test),
+    }
 
 
 def extract_feature(data):
